@@ -17,24 +17,59 @@ const operate = function(operator, a, b){
 
 //add listener for buttons
 const clickable = document.querySelectorAll('.num');
-const operators = document.querySelectorAll('.operator');
+//operators
+const operAdd = document.querySelectorAll('.operator-add')[0];
+const operSub = document.querySelectorAll('.operator-subtract')[0];
+const operMultiply = document.querySelectorAll('.operator-multiply')[0];
+const operDivide = document.querySelectorAll('.operator-divide')[0];
+//check if second number is coming
+let time4SecondNumber = false;
+//equal sign
+const operEqual = document.querySelector('.result');
+
 
 let numberSilo = {
     firstNumber: [],
-    secondNumber: []
+    secondNumber: [],
+    operator:[]
 };
 
 clickable.forEach(function(btn){
     btn.addEventListener('click', function(){
-        numberSilo.firstNumber.push(btn.textContent);
-        console.log(numberSilo.firstNumber.join(''));
+        if (time4SecondNumber){
+            numberSilo.secondNumber.push(btn.textContent);
+        } else {
+            numberSilo.firstNumber.push(btn.textContent);
+            console.log(numberSilo.firstNumber.join(''));
+        }
+
     });
   });
 
 
-//find a way to call the four functions from one function here
-operators.forEach(function(element){
-    element.addEventListener('click', function(){
-        numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
-    })
+//event listener for operators
+operAdd.addEventListener('click', function(){
+    numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+    numberSilo.operator = 'add';
+    time4SecondNumber = true; 
+})
+operSub.addEventListener('click', function(){
+    numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+    numberSilo.operator = 'subtract';
+    time4SecondNumber = true;
+})
+operMultiply.addEventListener('click', function(){
+    numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+    numberSilo.operator = 'multiply';
+    time4SecondNumber = true;
+})
+operDivide.addEventListener('click', function(){
+    numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+    numberSilo.operator = 'divide';
+    time4SecondNumber = true;
+})
+
+//event listener for equal sign
+operEqual.addEventListener('click', function(){
+    numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
 })
