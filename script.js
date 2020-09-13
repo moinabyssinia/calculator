@@ -44,6 +44,9 @@ clickable.forEach(function(btn){
             numberSilo.secondNumber.push(btn.textContent);
             numDisplay.textContent = numDisplay.textContent + 
                 numberSilo.secondNumber[numberSilo.secondNumber.length -1];
+            numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
+            numberSilo.firstNumber = operate(numberSilo.operator, Number(numberSilo.firstNumber), 
+                Number(numberSilo.secondNumber))
         } else {
             numberSilo.firstNumber.push(btn.textContent);
             numDisplay.textContent = numberSilo.firstNumber.join('');
@@ -96,4 +99,5 @@ operClear.addEventListener('click', function(){
     numDisplay.textContent = '0.0';
 })
 
-//move to part 5
+//working on part 6
+//make the multiple number operation work
