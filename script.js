@@ -28,6 +28,8 @@ let time4SecondNumber = false;
 const operEqual = document.querySelector('.result');
 //display on screen
 let numDisplay = document.querySelector('.screen');
+//clear button
+const operClear = document.querySelector('#clear');
 
 
 let numberSilo = {
@@ -86,4 +88,12 @@ operEqual.addEventListener('click', function(){
 })
 
 //make clear button work
+operClear.addEventListener('click', function(){
+    numberSilo.firstNumber = [];
+    numberSilo.secondNumber = [];
+    numberSilo.operator = [];
+    time4SecondNumber = false
+    numDisplay.textContent = '0.0';
+})
+
 //move to part 5
