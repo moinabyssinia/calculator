@@ -31,8 +31,9 @@ let numDisplay = document.querySelector('.screen');
 //clear button
 const operClear = document.querySelector('#clear');
 
-
+//operated pair = firstNumber + secondNumber
 let numberSilo = {
+    operatedPair:0,
     firstNumber: [],
     secondNumber: [],
     operator:[]
@@ -41,17 +42,11 @@ let numberSilo = {
 clickable.forEach(function(btn){
     btn.addEventListener('click', function(){
         if (time4SecondNumber){
+            //change firstNumber array to number
+            numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
             numberSilo.secondNumber.push(btn.textContent);
             numDisplay.textContent = numDisplay.textContent + 
                 numberSilo.secondNumber[numberSilo.secondNumber.length -1];
-            numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
-            //concatenate array to form a real number
-            numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
-            //save operated numbers into the firstNumber -> then display it
-            numberSilo.firstNumber = operate(numberSilo.operator, Number(numberSilo.firstNumber), 
-                Number(numberSilo.secondNumber))
-            //empty second number
-            numberSilo.secondNumber = [];
         } else {
             numberSilo.firstNumber.push(btn.textContent);
             numDisplay.textContent = numberSilo.firstNumber.join('');
@@ -64,35 +59,81 @@ clickable.forEach(function(btn){
 
 //event listener for operators
 operAdd.addEventListener('click', function(){
-    // numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
-    numDisplay.textContent = numDisplay.textContent + operAdd.textContent;
-    numberSilo.operator = add;
-    time4SecondNumber = true; 
+    if (!time4SecondNumber){
+        numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+        numDisplay.textContent = numDisplay.textContent + operAdd.textContent;
+        numberSilo.operator = add;
+        time4SecondNumber = true; 
+    } else{
+        numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));        
+        //save operated numbers into the firstNumber -> then display it
+        numberSilo.operatedPair = operate(numberSilo.operator, Number(numberSilo.firstNumber), 
+            Number(numberSilo.secondNumber))
+        //empty second number
+        numberSilo.secondNumber = [];
+        numberSilo.firstNumber = [];
+    }
+    
 })
 operSub.addEventListener('click', function(){
-    // numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
-    numDisplay.textContent = numDisplay.textContent + operSub.textContent;
-    numberSilo.operator = subtract;
-    time4SecondNumber = true;
+    if (!time4SecondNumber){
+        numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+        numDisplay.textContent = numDisplay.textContent + operSub.textContent;
+        numberSilo.operator = subtract;
+        time4SecondNumber = true;
+    } else{
+        numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));        
+        //save operated numbers into the firstNumber -> then display it
+        numberSilo.operatedPair = operate(numberSilo.operator, Number(numberSilo.firstNumber), 
+            Number(numberSilo.secondNumber))
+        //empty second number
+        numberSilo.secondNumber = [];
+        numberSilo.firstNumber = [];
+    }
+    
 })
 operMultiply.addEventListener('click', function(){
-    // numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
-    numDisplay.textContent = numDisplay.textContent + operMultiply.textContent;
-    numberSilo.operator = multiply;
-    time4SecondNumber = true;
+    if (!time4SecondNumber){
+        numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+        numDisplay.textContent = numDisplay.textContent + operMultiply.textContent;
+        numberSilo.operator = multiply;
+        time4SecondNumber = true;
+    } else{
+        numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));        
+        //save operated numbers into the firstNumber -> then display it
+        numberSilo.operatedPair = operate(numberSilo.operator, Number(numberSilo.firstNumber), 
+            Number(numberSilo.secondNumber))
+        //empty second number
+        numberSilo.secondNumber = [];
+        numberSilo.firstNumber = [];
+    }
+    
 })
 operDivide.addEventListener('click', function(){
-    // numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
-    numDisplay.textContent = numDisplay.textContent + operDivide.textContent;
-    numberSilo.operator = divide;
-    time4SecondNumber = true;
+    if (!time4SecondNumber){
+        numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+        numDisplay.textContent = numDisplay.textContent + operDivide.textContent;
+        numberSilo.operator = divide;
+        time4SecondNumber = true;
+    } else{
+        numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));        
+        //save operated numbers into the firstNumber -> then display it
+        numberSilo.operatedPair = operate(numberSilo.operator, Number(numberSilo.firstNumber), 
+            Number(numberSilo.secondNumber))
+        //empty second number
+        numberSilo.secondNumber = [];
+        numberSilo.firstNumber = [];
+    }
+    
 })
 
 //event listener for equal sign
 operEqual.addEventListener('click', function(){
-    // numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
-    console.log(numberSilo.firstNumber);
-    numDisplay.textContent = numberSilo.firstNumber;
+    numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
+    numberSilo.operatedPair = operate(numberSilo.operator, Number(numberSilo.firstNumber), 
+            Number(numberSilo.secondNumber))
+    console.log(numberSilo.operatedPair);
+    numDisplay.textContent = numberSilo.operatedPair;
 })
 
 //make clear button work
