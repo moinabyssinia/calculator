@@ -45,6 +45,8 @@ clickable.forEach(function(btn){
             numDisplay.textContent = numDisplay.textContent + 
                 numberSilo.secondNumber[numberSilo.secondNumber.length -1];
             numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
+            //concatenate array to form a real number
+            numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
             //save operated numbers into the firstNumber -> then display it
             numberSilo.firstNumber = operate(numberSilo.operator, Number(numberSilo.firstNumber), 
                 Number(numberSilo.secondNumber))
@@ -103,4 +105,4 @@ operClear.addEventListener('click', function(){
 })
 
 //working on part 6
-//check 12+7-5*3 example - debug
+//there is issue with multi digit numbers - fix the clickable event listener function
