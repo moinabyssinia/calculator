@@ -45,8 +45,11 @@ clickable.forEach(function(btn){
             numDisplay.textContent = numDisplay.textContent + 
                 numberSilo.secondNumber[numberSilo.secondNumber.length -1];
             numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
+            //save operated numbers into the firstNumber -> then display it
             numberSilo.firstNumber = operate(numberSilo.operator, Number(numberSilo.firstNumber), 
                 Number(numberSilo.secondNumber))
+            //empty second number
+            numberSilo.secondNumber = [];
         } else {
             numberSilo.firstNumber.push(btn.textContent);
             numDisplay.textContent = numberSilo.firstNumber.join('');
@@ -59,25 +62,25 @@ clickable.forEach(function(btn){
 
 //event listener for operators
 operAdd.addEventListener('click', function(){
-    numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+    // numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
     numDisplay.textContent = numDisplay.textContent + operAdd.textContent;
     numberSilo.operator = add;
     time4SecondNumber = true; 
 })
 operSub.addEventListener('click', function(){
-    numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+    // numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
     numDisplay.textContent = numDisplay.textContent + operSub.textContent;
     numberSilo.operator = subtract;
     time4SecondNumber = true;
 })
 operMultiply.addEventListener('click', function(){
-    numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+    // numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
     numDisplay.textContent = numDisplay.textContent + operMultiply.textContent;
     numberSilo.operator = multiply;
     time4SecondNumber = true;
 })
 operDivide.addEventListener('click', function(){
-    numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+    // numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
     numDisplay.textContent = numDisplay.textContent + operDivide.textContent;
     numberSilo.operator = divide;
     time4SecondNumber = true;
@@ -85,9 +88,9 @@ operDivide.addEventListener('click', function(){
 
 //event listener for equal sign
 operEqual.addEventListener('click', function(){
-    numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
-    console.log(operate(numberSilo.operator, numberSilo.firstNumber, numberSilo.secondNumber));
-    numDisplay.textContent = operate(numberSilo.operator, numberSilo.firstNumber, numberSilo.secondNumber);
+    // numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
+    console.log(numberSilo.firstNumber);
+    numDisplay.textContent = numberSilo.firstNumber;
 })
 
 //make clear button work
@@ -100,4 +103,4 @@ operClear.addEventListener('click', function(){
 })
 
 //working on part 6
-//make the multiple number operation work
+//check 12+7-5*3 example - debug
