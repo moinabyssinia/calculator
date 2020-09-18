@@ -43,7 +43,6 @@ clickable.forEach(function(btn){
     btn.addEventListener('click', function(){
         if (time4SecondNumber){
             //change firstNumber array to number
-            numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
             numberSilo.secondNumber.push(btn.textContent);
             numDisplay.textContent = numDisplay.textContent + 
                 numberSilo.secondNumber[numberSilo.secondNumber.length -1];
@@ -60,15 +59,21 @@ clickable.forEach(function(btn){
 //event listener for operators
 operAdd.addEventListener('click', function(){
     if (!time4SecondNumber){
-        numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+        //assign the first number to operatedPair
+        numberSilo.operatedPair = Number(numberSilo.firstNumber.join(''));
         numDisplay.textContent = numDisplay.textContent + operAdd.textContent;
         numberSilo.operator = add;
         time4SecondNumber = true; 
     } else{
-        numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));        
+        numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
+        //show operator
+        numDisplay.textContent = numDisplay.textContent + operAdd.textContent;        
         //save operated numbers into the firstNumber -> then display it
-        numberSilo.operatedPair = operate(numberSilo.operator, Number(numberSilo.firstNumber), 
+        numberSilo.operatedPair = operate(numberSilo.operator, numberSilo.operatedPair, 
             Number(numberSilo.secondNumber))
+        console.log('operatedPair = ', numberSilo.operatedPair);
+        //assign operator after getting operatedPair
+        numberSilo.operator = add;
         //empty second number
         numberSilo.secondNumber = [];
         numberSilo.firstNumber = [];
@@ -77,15 +82,21 @@ operAdd.addEventListener('click', function(){
 })
 operSub.addEventListener('click', function(){
     if (!time4SecondNumber){
-        numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+        //assign the first number to operatedPair
+        numberSilo.operatedPair = Number(numberSilo.firstNumber.join(''));
         numDisplay.textContent = numDisplay.textContent + operSub.textContent;
         numberSilo.operator = subtract;
         time4SecondNumber = true;
     } else{
-        numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));        
+        numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
+        //show operator
+        numDisplay.textContent = numDisplay.textContent + operSub.textContent;        
         //save operated numbers into the firstNumber -> then display it
-        numberSilo.operatedPair = operate(numberSilo.operator, Number(numberSilo.firstNumber), 
+        numberSilo.operatedPair = operate(numberSilo.operator, numberSilo.operatedPair, 
             Number(numberSilo.secondNumber))
+        console.log('operatedPair = ', numberSilo.operatedPair);
+        //assign operator after getting operatedPair
+        numberSilo.operator = subtract;
         //empty second number
         numberSilo.secondNumber = [];
         numberSilo.firstNumber = [];
@@ -94,15 +105,21 @@ operSub.addEventListener('click', function(){
 })
 operMultiply.addEventListener('click', function(){
     if (!time4SecondNumber){
-        numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+        //assign the first number to operatedPair
+        numberSilo.operatedPair = Number(numberSilo.firstNumber.join(''));
         numDisplay.textContent = numDisplay.textContent + operMultiply.textContent;
         numberSilo.operator = multiply;
         time4SecondNumber = true;
     } else{
-        numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));        
+        numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
+        //show operator
+        numDisplay.textContent = numDisplay.textContent + operMultiply.textContent;        
         //save operated numbers into the firstNumber -> then display it
-        numberSilo.operatedPair = operate(numberSilo.operator, Number(numberSilo.firstNumber), 
+        numberSilo.operatedPair = operate(numberSilo.operator, numberSilo.operatedPair, 
             Number(numberSilo.secondNumber))
+        console.log('operatedPair = ', numberSilo.operatedPair);
+        //assign operator after getting operatedPair
+        numberSilo.operator = multiply;
         //empty second number
         numberSilo.secondNumber = [];
         numberSilo.firstNumber = [];
@@ -111,15 +128,21 @@ operMultiply.addEventListener('click', function(){
 })
 operDivide.addEventListener('click', function(){
     if (!time4SecondNumber){
-        numberSilo.firstNumber = Number(numberSilo.firstNumber.join(''));
+        //assign the first number to operatedPair
+        numberSilo.operatedPair = Number(numberSilo.firstNumber.join(''));
         numDisplay.textContent = numDisplay.textContent + operDivide.textContent;
         numberSilo.operator = divide;
         time4SecondNumber = true;
     } else{
-        numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));        
+        numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
+        //show operator
+        numDisplay.textContent = numDisplay.textContent + operDivide.textContent;        
         //save operated numbers into the firstNumber -> then display it
-        numberSilo.operatedPair = operate(numberSilo.operator, Number(numberSilo.firstNumber), 
+        numberSilo.operatedPair = operate(numberSilo.operator, numberSilo.operatedPair, 
             Number(numberSilo.secondNumber))
+        console.log('operatedPair = ', numberSilo.operatedPair);
+        //assign operator after getting operatedPair
+        numberSilo.operator = divide;
         //empty second number
         numberSilo.secondNumber = [];
         numberSilo.firstNumber = [];
@@ -130,9 +153,9 @@ operDivide.addEventListener('click', function(){
 //event listener for equal sign
 operEqual.addEventListener('click', function(){
     numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
-    numberSilo.operatedPair = operate(numberSilo.operator, Number(numberSilo.firstNumber), 
+    numberSilo.operatedPair = operate(numberSilo.operator, numberSilo.operatedPair, 
             Number(numberSilo.secondNumber))
-    console.log(numberSilo.operatedPair);
+    console.log('final result = ',numberSilo.operatedPair);
     numDisplay.textContent = numberSilo.operatedPair;
 })
 
