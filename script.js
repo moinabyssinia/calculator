@@ -19,10 +19,10 @@ const operate = function(operator, a, b){
 const clickable = document.querySelectorAll('.num');
 const dotButton = document.querySelector('.dot');
 //operators
-const operAdd = document.querySelectorAll('.operator-add')[0];
-const operSub = document.querySelectorAll('.operator-subtract')[0];
-const operMultiply = document.querySelectorAll('.operator-multiply')[0];
-const operDivide = document.querySelectorAll('.operator-divide')[0];
+const operAdd = document.querySelector('.add');
+const operSub = document.querySelector('.subtract');
+const operMultiply = document.querySelector('.multiply');
+const operDivide = document.querySelector('.divide');
 
 
 //check if second number is coming

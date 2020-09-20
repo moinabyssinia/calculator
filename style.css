@@ -26,7 +26,7 @@ button{
     /* margin: 0 0 10px 0; */
 }
 .screen{
-    margin: 0 auto 0 auto;
+    margin: 0 auto 4px auto;
     width: 480px;
     height: 50px;
     border: 4px solid black;
@@ -35,4 +35,18 @@ button{
     text-align: end;
     font-size: 40px;
     font-family: 'digital';
+    background-color: black;
+    color: white;
+}
+.add{
+    background-color: #51e2f5;
+}
+.subtract{
+    background-color: #9df9ef;
+}
+.multiply{
+    background-color: #ffa8B6;
+}
+.divide{
+    background-color: #a28089;
 }
