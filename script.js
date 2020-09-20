@@ -17,11 +17,14 @@ const operate = function(operator, a, b){
 
 //add listener for buttons
 const clickable = document.querySelectorAll('.num');
+const dotButton = document.querySelector('.dot');
 //operators
 const operAdd = document.querySelectorAll('.operator-add')[0];
 const operSub = document.querySelectorAll('.operator-subtract')[0];
 const operMultiply = document.querySelectorAll('.operator-multiply')[0];
 const operDivide = document.querySelectorAll('.operator-divide')[0];
+
+
 //check if second number is coming
 let time4SecondNumber = false;
 //equal sign
