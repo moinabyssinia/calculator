@@ -33,6 +33,11 @@ const operEqual = document.querySelector('.result');
 let numDisplay = document.querySelector('.screen');
 //clear button
 const operClear = document.querySelector('#clear');
+//backspace button
+const backSpace = document.querySelector('.backspace');
+//boolean delete
+let deleteNum = false;
+
 
 //operated pair = firstNumber + secondNumber
 let numberSilo = {
@@ -41,6 +46,13 @@ let numberSilo = {
     secondNumber: [],
     operator:[]
 };
+
+//adding backspace event listener
+backSpace.addEventListener('click', function(){
+    deleteNum = true;
+    console.log('deleting');
+})
+
 
 clickable.forEach(function(btn){
     btn.addEventListener('click', function(){
@@ -51,6 +63,9 @@ clickable.forEach(function(btn){
                 numberSilo.secondNumber[numberSilo.secondNumber.length -1];
         } else {
             numberSilo.firstNumber.push(btn.textContent);
+            if (deleteNum){
+                numberSilo.firstNumber.pop(numberSilo.firstNumber[numberSilo.firstNumber.length -1]);
+            }
             numDisplay.textContent = numberSilo.firstNumber.join('');
             // console.log(numberSilo.firstNumber.join(''));
         }
@@ -171,5 +186,4 @@ operClear.addEventListener('click', function(){
     numDisplay.textContent = '0.0';
 })
 
-//working on part 6
-//there is issue with multi digit numbers - fix the clickable event listener function
+// debug lines 66-69 for backspace implementation
