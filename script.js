@@ -64,7 +64,8 @@ clickable.forEach(function(btn){
         } else {
             numberSilo.firstNumber.push(btn.textContent);
             if (deleteNum){
-                numberSilo.firstNumber.pop(numberSilo.firstNumber[numberSilo.firstNumber.length -1]);
+                console.log('deleting last element');
+                numberSilo.firstNumber.pop();
             }
             numDisplay.textContent = numberSilo.firstNumber.join('');
             // console.log(numberSilo.firstNumber.join(''));
@@ -187,3 +188,4 @@ operClear.addEventListener('click', function(){
 })
 
 // debug lines 66-69 for backspace implementation
+// line 68 just seems not to work - figure out why!
