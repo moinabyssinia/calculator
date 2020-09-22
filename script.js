@@ -57,18 +57,41 @@ backSpace.addEventListener('click', function(){
 clickable.forEach(function(btn){
     btn.addEventListener('click', function(){
         if (time4SecondNumber){
-            //change firstNumber array to number
-            numberSilo.secondNumber.push(btn.textContent);
-            numDisplay.textContent = numDisplay.textContent + 
-                numberSilo.secondNumber[numberSilo.secondNumber.length -1];
+            // check if second number or operator is being deleted
+            if (deleteNum){
+                // operator being deleted
+                if (numberSilo.secondNumber.length === 0){
+                    numberSilo.operator = [];
+                    numDisplay.textContent = numDisplay.textContent.substr(0, 
+                        numDisplay.textContent.length - 1)
+                    deleteNum = false;
+                }
+                // second digit being delted
+                else {
+                    console.log('deleting second number');
+                    numberSilo.secondNumber.pop();
+                    numDisplay.textContent = numDisplay.textContent.substr(0,
+                        (numDisplay.textContent.length - 1));
+                    deleteNum = false;
+                }
+            } else {
+                //change firstNumber array to number
+                numberSilo.secondNumber.push(btn.textContent);
+                numDisplay.textContent = numDisplay.textContent + 
+                    numberSilo.secondNumber[numberSilo.secondNumber.length -1];
+            }
+
         } else {
-            numberSilo.firstNumber.push(btn.textContent);
+            // check if first number is being deleted
             if (deleteNum){
                 console.log('deleting last element');
                 numberSilo.firstNumber.pop();
+                numDisplay.textContent = numberSilo.firstNumber.join('');
+                deleteNum = false;
+            } else {
+                numberSilo.firstNumber.push(btn.textContent);
+                numDisplay.textContent = numberSilo.firstNumber.join('');
             }
-            numDisplay.textContent = numberSilo.firstNumber.join('');
-            // console.log(numberSilo.firstNumber.join(''));
         }
 
     });
@@ -187,5 +210,4 @@ operClear.addEventListener('click', function(){
     numDisplay.textContent = '0.0';
 })
 
-// debug lines 66-69 for backspace implementation
-// line 68 just seems not to work - figure out why!
+// debug the backspace implementation for operators
