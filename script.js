@@ -194,11 +194,15 @@ operDivide.addEventListener('click', function(){
 
 //event listener for equal sign
 operEqual.addEventListener('click', function(){
-    numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
-    numberSilo.operatedPair = operate(numberSilo.operator, numberSilo.operatedPair, 
-            Number(numberSilo.secondNumber))
-    console.log('final result = ',numberSilo.operatedPair);
-    numDisplay.textContent = numberSilo.operatedPair;
+    if (numberSilo.secondNumber.length === 0){
+        numDisplay.textContent = numberSilo.operatedPair;
+    } else {
+        numberSilo.secondNumber = Number(numberSilo.secondNumber.join(''));
+        numberSilo.operatedPair = operate(numberSilo.operator, numberSilo.operatedPair, 
+                Number(numberSilo.secondNumber))
+        console.log('final result = ',numberSilo.operatedPair);
+        numDisplay.textContent = numberSilo.operatedPair;
+    }
 })
 
 //make clear button work
