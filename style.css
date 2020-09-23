@@ -15,6 +15,10 @@
     display: flex;
     flex-direction: row;
 }
+.col-clear{
+    display: flex;
+    flex-direction: row;
+}
 .col-clear button{
     width: 25%;
     float: right;
@@ -27,12 +31,14 @@ button{
 }
 .screen{
     margin: 0 auto 4px auto;
+    display: flex; 
+    align-items: center;
+    justify-content: end;
     width: 480px;
-    height: 50px;
+    height: 70px;
     border: 4px solid black;
     border-radius: 5px;
     padding: 5px;
-    text-align: end;
     font-size: 40px;
     font-family: 'digital';
     background-color: black;
@@ -49,4 +55,13 @@ button{
 }
 .divide{
     background-color: #a28089;
+}
+
+.operator{
+    background-color: rgb(95, 95, 95);
+    color: white;
+}
+.col-clear button{
+    background-color: rgb(95, 95, 95);
+    color: white;
 }
