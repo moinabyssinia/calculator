@@ -35,6 +35,10 @@ let numDisplay = document.querySelector('.screen');
 const operClear = document.querySelector('#clear');
 //backspace button
 const backSpace = document.querySelector('.backspace');
+//square root button
+const squareRoot = document.querySelector('.root');
+//invert button
+const operInvert = document.querySelector('.invert');
 //boolean delete
 let deleteNum = false;
 
@@ -99,6 +103,16 @@ clickable.forEach(function(btn){
 
 
 //event listener for operators
+squareRoot.addEventListener('click', function(){
+    numberSilo.operatedPair = Number(numberSilo.firstNumber.join(''));
+    numDisplay.textContent = Math.sqrt(numberSilo.operatedPair);
+})
+operInvert.addEventListener('click', function(){
+    numberSilo.operatedPair = Number(numberSilo.firstNumber.join(''));
+    numDisplay.textContent = 1/numberSilo.operatedPair;
+})
+
+
 operAdd.addEventListener('click', function(){
     if (!time4SecondNumber){
         //assign the first number to operatedPair
