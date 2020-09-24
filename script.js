@@ -57,6 +57,10 @@ backSpace.addEventListener('click', function(){
     console.log('deleting');
 })
 
+/* refactor the functions below to single-out
+the functions inside the event listeners and try
+to access these both from 'clicked' and 'typed'
+situations */
 
 clickable.forEach(function(btn){
     btn.addEventListener('click', function(){
@@ -228,4 +232,3 @@ operClear.addEventListener('click', function(){
     numDisplay.textContent = '0.0';
 })
 
-// debug the backspace implementation for operators
