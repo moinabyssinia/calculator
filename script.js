@@ -62,6 +62,7 @@ the functions inside the event listeners and try
 to access these both from 'clicked' and 'typed'
 situations */
 
+//to be called from inside an event listener
 const getNumbers = function(){
     if (time4SecondNumber){
         // check if second number or operator is being deleted
