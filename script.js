@@ -51,11 +51,9 @@ let numberSilo = {
     operator:[]
 };
 
-//adding backspace event listener
-backSpace.addEventListener('click', function(){
-    deleteNum = true;
-    console.log('deleting');
-})
+// add keycodes for numbers
+const allowedNumbers = [7, 8, 9, 6, 5, 4, 3, 2, 1, 0];
+
 
 /* refactor the functions below to single-out
 the functions inside the event listeners and try
@@ -109,17 +107,28 @@ clickable.forEach(function(btn){
     btn.addEventListener('click', getNumbers);
   });
 
+// call getNumbers - keyboard support
+const getTypedKeys = function(){
+    let numValue;
+    document.addEventListener('keydown', function(e){
+        console.log(e.key);
+        numValue = e.key;
+      });
+    return numValue;
+}
+getTypedKeys();
+
 
 //event listener for operators
 squareRoot.addEventListener('click', function(){
     numberSilo.operatedPair = Number(numberSilo.firstNumber.join(''));
     numDisplay.textContent = Math.sqrt(numberSilo.operatedPair);
 })
+
 operInvert.addEventListener('click', function(){
     numberSilo.operatedPair = Number(numberSilo.firstNumber.join(''));
     numDisplay.textContent = 1/numberSilo.operatedPair;
 })
-
 
 operAdd.addEventListener('click', function(){
     if (!time4SecondNumber){
@@ -144,6 +153,7 @@ operAdd.addEventListener('click', function(){
     }
     
 })
+
 operSub.addEventListener('click', function(){
     if (!time4SecondNumber){
         //assign the first number to operatedPair
@@ -167,6 +177,7 @@ operSub.addEventListener('click', function(){
     }
     
 })
+
 operMultiply.addEventListener('click', function(){
     if (!time4SecondNumber){
         //assign the first number to operatedPair
@@ -190,6 +201,7 @@ operMultiply.addEventListener('click', function(){
     }
     
 })
+
 operDivide.addEventListener('click', function(){
     if (!time4SecondNumber){
         //assign the first number to operatedPair
@@ -236,3 +248,8 @@ operClear.addEventListener('click', function(){
     numDisplay.textContent = '0.0';
 })
 
+//adding backspace event listener
+backSpace.addEventListener('click', function(){
+    deleteNum = true;
+    console.log('deleting');
+})
