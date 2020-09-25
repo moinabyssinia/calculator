@@ -62,47 +62,50 @@ the functions inside the event listeners and try
 to access these both from 'clicked' and 'typed'
 situations */
 
-clickable.forEach(function(btn){
-    btn.addEventListener('click', function(){
-        if (time4SecondNumber){
-            // check if second number or operator is being deleted
-            if (deleteNum){
-                // operator being deleted
-                if (numberSilo.secondNumber.length === 0){
-                    numberSilo.operator = [];
-                    numDisplay.textContent = numDisplay.textContent.substr(0, 
-                        numDisplay.textContent.length - 1)
-                    deleteNum = false;
-                }
-                // second digit being delted
-                else {
-                    console.log('deleting second number');
-                    numberSilo.secondNumber.pop();
-                    numDisplay.textContent = numDisplay.textContent.substr(0,
-                        (numDisplay.textContent.length - 1));
-                    deleteNum = false;
-                }
-            } else {
-                //change firstNumber array to number
-                numberSilo.secondNumber.push(btn.textContent);
-                numDisplay.textContent = numDisplay.textContent + 
-                    numberSilo.secondNumber[numberSilo.secondNumber.length -1];
-            }
-
-        } else {
-            // check if first number is being deleted
-            if (deleteNum){
-                console.log('deleting last element');
-                numberSilo.firstNumber.pop();
-                numDisplay.textContent = numberSilo.firstNumber.join('');
+const getNumbers = function(){
+    if (time4SecondNumber){
+        // check if second number or operator is being deleted
+        if (deleteNum){
+            // operator being deleted
+            if (numberSilo.secondNumber.length === 0){
+                numberSilo.operator = [];
+                numDisplay.textContent = numDisplay.textContent.substr(0, 
+                    numDisplay.textContent.length - 1)
                 deleteNum = false;
-            } else {
-                numberSilo.firstNumber.push(btn.textContent);
-                numDisplay.textContent = numberSilo.firstNumber.join('');
             }
+            // second digit being delted
+            else {
+                console.log('deleting second number');
+                numberSilo.secondNumber.pop();
+                numDisplay.textContent = numDisplay.textContent.substr(0,
+                    (numDisplay.textContent.length - 1));
+                deleteNum = false;
+            }
+        } else {
+            //change firstNumber array to number
+            numberSilo.secondNumber.push(this.textContent);
+            numDisplay.textContent = numDisplay.textContent + 
+                numberSilo.secondNumber[numberSilo.secondNumber.length -1];
         }
 
-    });
+    } else {
+        // check if first number is being deleted
+        if (deleteNum){
+            console.log('deleting last element');
+            numberSilo.firstNumber.pop();
+            numDisplay.textContent = numberSilo.firstNumber.join('');
+            deleteNum = false;
+        } else {
+            numberSilo.firstNumber.push(this.textContent);
+            numDisplay.textContent = numberSilo.firstNumber.join('');
+        }
+    }
+
+}
+
+//call getNumbers when number are clicked
+clickable.forEach(function(btn){
+    btn.addEventListener('click', getNumbers);
   });
 
 
