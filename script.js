@@ -61,7 +61,7 @@ to access these both from 'clicked' and 'typed'
 situations */
 
 //to be called from inside an event listener
-const getNumbers = function(){
+const getNumbers = function(typedChar){
     if (time4SecondNumber){
         // check if second number or operator is being deleted
         if (deleteNum){
@@ -108,13 +108,13 @@ clickable.forEach(function(btn){
   });
 
 // call getNumbers - keyboard support
+let typedChar = 0;
 const getTypedKeys = function(){
-    let numValue;
     document.addEventListener('keydown', function(e){
         console.log(e.key);
-        numValue = e.key;
+        typedChar = e.key;
       });
-    return numValue;
+    getNumbers(typedChar);
 }
 getTypedKeys();
 
