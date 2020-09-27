@@ -260,6 +260,7 @@ const giveResults = function(){
 
 /* calling equal operator function */
 operEqual.addEventListener('click', giveResults);
+
 //make clear button work
 operClear.addEventListener('click', function(){
     numberSilo.firstNumber = [];
