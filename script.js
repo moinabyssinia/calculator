@@ -84,8 +84,13 @@ const getNumbers = function(typedChar){
             }
         } else {
             //change firstNumber array to number
-            // numberSilo.secondNumber.push(this.textContent);
-            numberSilo.secondNumber.push(typedChar);
+            /* check if number is typed or clicked */
+            if (keyInput === true){
+                numberSilo.secondNumber.push(typedChar);
+                keyInput = false;
+            } else{
+                numberSilo.secondNumber.push(this.textContent);
+            }
             numDisplay.textContent = numDisplay.textContent + 
                 numberSilo.secondNumber[numberSilo.secondNumber.length -1];
         }
@@ -98,8 +103,13 @@ const getNumbers = function(typedChar){
             numDisplay.textContent = numberSilo.firstNumber.join('');
             deleteNum = false;
         } else {
-            // numberSilo.firstNumber.push(this.textContent);
-            numberSilo.firstNumber.push(typedChar);
+            /* check if number is typed or clicked */
+            if (keyInput === true){
+                numberSilo.firstNumber.push(typedChar);
+                keyInput = false;
+            } else {
+                numberSilo.firstNumber.push(this.textContent);
+            }
             numDisplay.textContent = numberSilo.firstNumber.join('');
         }
     }
@@ -118,6 +128,10 @@ const getTypedKeys = function(){
         keyInput = true;
         console.log(e.key);
         typedChar = e.key;
+        // check if 'enter' key is entered
+        if (typedChar === 'Enter'){
+            giveResults();
+        }
         getNumbers(typedChar);
       });
 }
@@ -232,7 +246,7 @@ operDivide.addEventListener('click', function(){
 })
 
 //event listener for equal sign
-operEqual.addEventListener('click', function(){
+const giveResults = function(){
     if (numberSilo.secondNumber.length === 0){
         numDisplay.textContent = numberSilo.operatedPair;
     } else {
@@ -242,8 +256,10 @@ operEqual.addEventListener('click', function(){
         console.log('final result = ',numberSilo.operatedPair);
         numDisplay.textContent = numberSilo.operatedPair;
     }
-})
+}
 
+/* calling equal operator function */
+operEqual.addEventListener('click', giveResults);
 //make clear button work
 operClear.addEventListener('click', function(){
     numberSilo.firstNumber = [];
