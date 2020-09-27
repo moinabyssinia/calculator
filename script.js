@@ -41,6 +41,8 @@ const squareRoot = document.querySelector('.root');
 const operInvert = document.querySelector('.invert');
 //boolean delete
 let deleteNum = false;
+//check if there is a keyboard input
+let keyInput = false;
 
 
 //operated pair = firstNumber + secondNumber
@@ -82,7 +84,8 @@ const getNumbers = function(typedChar){
             }
         } else {
             //change firstNumber array to number
-            numberSilo.secondNumber.push(this.textContent);
+            // numberSilo.secondNumber.push(this.textContent);
+            numberSilo.secondNumber.push(typedChar);
             numDisplay.textContent = numDisplay.textContent + 
                 numberSilo.secondNumber[numberSilo.secondNumber.length -1];
         }
@@ -95,7 +98,8 @@ const getNumbers = function(typedChar){
             numDisplay.textContent = numberSilo.firstNumber.join('');
             deleteNum = false;
         } else {
-            numberSilo.firstNumber.push(this.textContent);
+            // numberSilo.firstNumber.push(this.textContent);
+            numberSilo.firstNumber.push(typedChar);
             numDisplay.textContent = numberSilo.firstNumber.join('');
         }
     }
@@ -108,13 +112,14 @@ clickable.forEach(function(btn){
   });
 
 // call getNumbers - keyboard support
-let typedChar = 0;
+let typedChar = [];
 const getTypedKeys = function(){
     document.addEventListener('keydown', function(e){
+        keyInput = true;
         console.log(e.key);
         typedChar = e.key;
+        getNumbers(typedChar);
       });
-    getNumbers(typedChar);
 }
 getTypedKeys();
 
